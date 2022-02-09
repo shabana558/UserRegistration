@@ -16,26 +16,28 @@ namespace UserRegistration
         public void Validating()
         {
             Regex regex = new Regex(pattern);
-            
-            Console.WriteLine("Validating Email Address");
-            ValidatingEmailId();
+
+            Console.WriteLine("Validating Phone Number");
+            ValidatingPhoneNum();
 
         }
-        public void ValidatingEmailId()
+
+        public void ValidatingPhoneNum()
         {
-            string emailPattern = (@"^[a-zA-Z0-9]+([\.\+\-][a-zA-Z0-9]+)?@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,}(\.[a-zA-Z]+)?)$");
-            Regex regex = new Regex(emailPattern);
-            Console.WriteLine("Enter email Id");
-            string emails = Console.ReadLine();
-            bool res = regex.IsMatch(emails);
+            string phoneNumPattern = @"^[0-9]+[\s]+[0-9]{10}$";
+            Regex regex = new Regex(phoneNumPattern);
+            Console.WriteLine("Enter valid Phone Number");
+            string phoneNumber = Console.ReadLine();
+            bool res = regex.IsMatch(phoneNumber);
             if (res)
             {
-                Console.WriteLine("valid email address");
+                Console.WriteLine("valid phone Number");
             }
             else
             {
-                Console.WriteLine("Please enter a Valid Email!");
+                Console.WriteLine("Please enter a Valid phone Number!");
             }
+
         }
     }
 }
