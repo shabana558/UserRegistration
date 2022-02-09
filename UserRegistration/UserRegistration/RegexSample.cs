@@ -17,25 +17,25 @@ namespace UserRegistration
         {
             Regex regex = new Regex(pattern);
 
-            Console.WriteLine("Validating Phone Number");
-            ValidatingPhoneNum();
+            Console.WriteLine("Validating password");
+            ValidatingPassWord();
 
         }
 
-        public void ValidatingPhoneNum()
+        public void ValidatingPassWord()
         {
-            string phoneNumPattern = @"^[0-9]+[\s]+[0-9]{10}$";
-            Regex regex = new Regex(phoneNumPattern);
-            Console.WriteLine("Enter valid Phone Number");
-            string phoneNumber = Console.ReadLine();
-            bool res = regex.IsMatch(phoneNumber);
+            string passwordPattern = @"[a-z,A-Z,0-9]{8,}$";
+            Regex regex = new Regex(passwordPattern);
+            Console.WriteLine("Enter password minimum 8 characters");
+            string password = Console.ReadLine();
+            bool res = regex.IsMatch(password);
             if (res)
             {
-                Console.WriteLine("valid phone Number");
+                Console.WriteLine("Password valid");
             }
             else
             {
-                Console.WriteLine("Please enter a Valid phone Number!");
+                Console.WriteLine("invalid password");
             }
 
         }
