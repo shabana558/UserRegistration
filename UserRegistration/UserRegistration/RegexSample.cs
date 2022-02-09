@@ -14,20 +14,19 @@ namespace UserRegistration
         public void Validating()
         {
             Regex regex = new Regex(pattern);
-            Console.WriteLine("Validating the first name");
-            ValidatingFirstName();
+            
+            Console.WriteLine("Validating The Last Name");
+            ValidatingLastName();
 
         }
 
-
-
-        public void ValidatingFirstName()
+        public void ValidatingLastName()
         {
-            Regex Regex = new Regex(pattern);
-            Console.WriteLine("Enter the first name:");
-            string input = Console.ReadLine();
-            bool res = Regex.IsMatch(input);
-            if (res)
+            Regex regex = new Regex(pattern);
+            Console.WriteLine("Enter the last name : ");
+            string input1 = Console.ReadLine();
+            bool res1 = regex.IsMatch(input1);
+            if (res1)
             {
                 Console.WriteLine("Valid");
             }
