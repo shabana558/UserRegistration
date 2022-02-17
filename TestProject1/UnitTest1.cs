@@ -15,9 +15,17 @@ namespace TestProject1
 
         public void ValidateFirstname(string a, string expected)
         {
+            try
+            {
 
-            var actual = RegexSample.ValidatingFirstName(a);
-            Assert.AreEqual(expected, actual);
+                var actual = RegexSample.ValidatingFirstName(a);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CustomException actual)
+            {
+                Assert.AreEqual(expected, actual.message);
+            }
+
         }
         //Validating for Last Name
         [TestMethod]
@@ -25,10 +33,18 @@ namespace TestProject1
         [DataRow("Am", null)]
         [DataRow("Ameer", "Ameer")]
         [DataRow("Ameer05", null)]
+
         public void ValidateUserLastname(string a, string expected)
         {
-            var actual = RegexSample.ValidatingLastName(a);
-            Assert.AreEqual(expected, actual);
+            try
+            {
+                var actual = RegexSample.ValidatingLastName(a);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CustomException actual)
+            {
+                Assert.AreEqual(expected, actual.message);
+            }
         }
         //Validation for Email
         [TestMethod]
@@ -55,12 +71,19 @@ namespace TestProject1
         [DataRow("abc@gmail.com.1a", null)]
         [DataRow("abc@gmail.com.aa.au", null)]
 
+
         public void ValidateUserEmail(string a, string expected)
         {
-            var actual = RegexSample.ValidatingEmailId(a);
-            Assert.AreEqual(expected, actual);
+            try
+            {
+                var actual = RegexSample.ValidatingEmailId(a);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CustomException actual)
+            {
+                Assert.AreEqual(expected, actual.message);
+            }
         }
-
         //Validation for Phone Number
         [TestMethod]
         [DataRow("1 1000987267", "1 1000987267")]
@@ -70,10 +93,18 @@ namespace TestProject1
         [DataRow("919842905", null)]
         [DataRow("91 984290", null)]
         [DataRow("91 984290505000000", null)]
+
         public void ValidateUserPhoneNumber(string a, string expected)
         {
-            var actual = RegexSample.ValidatingPhoneNum(a);
-            Assert.AreEqual(expected, actual);
+            try
+            {
+                var actual = RegexSample.ValidatingPhoneNum(a);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CustomException actual)
+            {
+                Assert.AreEqual(expected, actual.message);
+            }
         }
 
         ////Validation for Password
@@ -92,11 +123,21 @@ namespace TestProject1
         [DataRow(")shaik12", null)]
         [DataRow("sha-ik@12S", null)]
         [DataRow("shaiK@s", null)]
-
         public void ValidateUserPassword(string a, string expected)
         {
-            var actual = RegexSample.ValidatingPassWord(a);
-            Assert.AreEqual(expected, actual);
+            try
+            {
+                var actual = RegexSample.ValidatingPassWord(a);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CustomException actual)
+            {
+                Assert.AreEqual(expected, actual.message);
+            }
         }
     }
 }
+
+
+
+        
