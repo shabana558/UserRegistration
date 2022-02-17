@@ -8,76 +8,137 @@ using System.Text.RegularExpressions;
 
 namespace UserRegistration
 {
-    internal class RegexSample
+    public class RegexSample
     {
         string pattern = "^[A-Za-z]{2,}$";
         public void Validating()
         {
-
+            Console.WriteLine("--------------------------");
             Regex regex = new Regex(pattern);
-            Console.WriteLine("Validating The Email Id");
-            Console.WriteLine("Enter Email Id");
+            Console.WriteLine("--------------------------");
+            Console.WriteLine(" ");
+            Console.WriteLine("Validating The First Name");
+            Console.WriteLine("Enter the first name : ");
+            string input = Console.ReadLine();
+            ValidatingFirstName(input);
+            Console.WriteLine("--------------------------");
+            Console.WriteLine(" ");
+            Console.WriteLine("Validating The Last Name");
+            Console.WriteLine("Enter the last name : ");
             string input1 = Console.ReadLine();
-            ValidatingEmailId(input1);
+            ValidatingLastName(input1);
+            Console.WriteLine("--------------------------");
+            Console.WriteLine(" ");
             Console.WriteLine("Validating The Email Id");
             Console.WriteLine("Enter Email Id");
             string input2 = Console.ReadLine();
             ValidatingEmailId(input2);
-            Console.WriteLine("Validating The Email Id");
-            Console.WriteLine("Enter Email Id");
+            Console.WriteLine("--------------------------");
+            Console.WriteLine(" ");
+            Console.WriteLine("Validating The Phone Number");
+            Console.WriteLine("Enter the phone number");
             string input3 = Console.ReadLine();
-            ValidatingEmailId(input3);
-            Console.WriteLine("Validating The Email Id");
-            Console.WriteLine("Enter Email Id");
+            ValidatingPhoneNum(input3);
+            Console.WriteLine("--------------------------");
+            Console.WriteLine(" ");
+            Console.WriteLine("Validating The Password");
+            Console.WriteLine("Enter the password");
             string input4 = Console.ReadLine();
-            ValidatingEmailId(input4);
-            Console.WriteLine("Validating The Email Id");
-            Console.WriteLine("Enter Email Id");
-            string input5 = Console.ReadLine();
-            ValidatingEmailId(input5);
-            Console.WriteLine("Validating The Email Id");
-            Console.WriteLine("Enter Email Id");
-            string input6 = Console.ReadLine();
-            ValidatingEmailId(input6);
-            Console.WriteLine("Validating The Email Id");
-            Console.WriteLine("Enter Email Id");
-            string input7 = Console.ReadLine();
-            ValidatingEmailId(input7);
-            Console.WriteLine("Validating The Email Id");
-            Console.WriteLine("Enter Email Id");
-            string input8 = Console.ReadLine();
-            ValidatingEmailId(input8);
-            Console.WriteLine("Validating The Email Id");
-            Console.WriteLine("Enter Email Id");
-            string input9 = Console.ReadLine();
-            ValidatingEmailId(input9);
+            ValidatingPassWord(input4);
+
+        }
+        public static string ValidatingFirstName(string firstName)
+        {
+            Regex regex = new Regex("^[A-Z][a-z]{2,}$");
+            bool res = regex.IsMatch(firstName);
+            if (res)
+            {
+                Console.WriteLine("Valid");
+                return firstName;
+            }
+            else
+            {
+                Console.WriteLine("Invalid");
+            }
+            return default;
+        }
+        public static string ValidatingLastName(string lastName)
+        {
+            string pattern = "^[A-Z][a-z]{2,}$";
+            Regex regex = new Regex(pattern);
+            bool res1 = regex.IsMatch(lastName);
+            if (res1)
+            {
+                Console.WriteLine("Valid");
+                return lastName;
+            }
+            else
+            {
+                Console.WriteLine("Invalid");
+            }
+            return default;
+
         }
         public static string ValidatingEmailId(string email)
         {
-           string emailPattern = (@"^[a-zA-Z0-9]+([\.\+\-][a-zA-Z0-9]+)?@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,}(\.[a-zA-Z]+)?)$");
+
+            string emailPattern = (@"^[a-zA-Z0-9]+([\.\+\-][a-zA-Z0-9]+)?@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,}(\.[a-zA-Z]+)?)$");
             Regex regex = new Regex(emailPattern);
             // for (int i = 0; i < emailInput.Length; i++)
             //{
             bool result = regex.IsMatch(email);
             if (result)
             {
-                Console.WriteLine(email + "------->valid");
+                Console.WriteLine(email + " ----->Valid");
                 return email;
             }
             else
             {
-                Console.WriteLine(email + "----->Invalid");
+                Console.WriteLine(email + " ----->Invalid");
+            }
+
+            return default;
+        }
+
+        public static string ValidatingPhoneNum(string phoneNum)
+        {
+            string[] phoneNumInput = { "91 7852234896", " 91 9865741548", "919865795312", "91@123", "A865" };
+            string phoneNumPattern = @"^[0-9]+[\s]+[0-9]{10}$";
+            Regex regex = new Regex(phoneNumPattern);
+
+            bool result = regex.IsMatch(phoneNum);
+            if (result)
+            {
+                Console.WriteLine(phoneNum + " ----->Valid");
+                return phoneNum;
+            }
+            else
+            {
+                Console.WriteLine(phoneNum + " ----->InValid");
+            }
+            return default;
+        }
+
+
+        public static string ValidatingPassWord(string password)
+        {
+            string[] passwordInput = { "Shabana@12", "sakAthi_32", "raksha123", "Harika" };
+            string passwordPattern = @"(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?!.*[<>`])(?=[^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*[.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\][^.,:;'!@#$%^&*_+=|(){}[?\-\]\/\\]*$).{8,}$";
+
+            Regex regex = new Regex(passwordPattern);
+
+            bool result = regex.IsMatch(password);
+            if (result)
+            {
+                Console.WriteLine(password + " ----->Valid");
+                return password;
+            }
+            else
+            {
+                Console.WriteLine(password + " ----->InValid");
             }
 
             return default;
         }
     }
-}
-
-       
-        
-
-    
-
-    
-
+}        
